@@ -1,10 +1,9 @@
 let display = document.getElementById("display");
 
 function appendValue(value) {
-    const operators = ["+", "-", "*", "/"];
+    const operators = ["+", "-", "*", "/", "%"];
     const lastChar = display.value.slice(-1);
 
-    // Prevent multiple operators in a row
     if (operators.includes(value) && operators.includes(lastChar)) {
         return;
     }
@@ -23,10 +22,8 @@ function deleteLast() {
 function calculate() {
     try {
         if (display.value === "") return;
-
-        // Prevent expression ending with operator
         const lastChar = display.value.slice(-1);
-        if (["+", "-", "*", "/"].includes(lastChar)) {
+        if (["+", "-", "*", "/", "%"].includes(lastChar)) {
             display.value = "Error";
             return;
         }
@@ -36,3 +33,4 @@ function calculate() {
         display.value = "Error";
     }
 }
+
